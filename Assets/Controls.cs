@@ -72,6 +72,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CanvasToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f8476f0-1025-45f0-86bb-adecb6596d1a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -316,6 +325,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""SpecialAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01322afb-36e1-4fed-8c44-6e6fd102ed29"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardMouse"",
+                    ""action"": ""CanvasToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4769d27a-4407-42d1-8293-d442caa2732d"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""CanvasToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -493,6 +524,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_PlayerNormal_MoveVertical = m_PlayerNormal.FindAction("MoveVertical", throwIfNotFound: true);
         m_PlayerNormal_Attack = m_PlayerNormal.FindAction("Attack", throwIfNotFound: true);
         m_PlayerNormal_SpecialAttack = m_PlayerNormal.FindAction("SpecialAttack", throwIfNotFound: true);
+        m_PlayerNormal_CanvasToggle = m_PlayerNormal.FindAction("CanvasToggle", throwIfNotFound: true);
         // PlayerInCar
         m_PlayerInCar = asset.FindActionMap("PlayerInCar", throwIfNotFound: true);
         m_PlayerInCar_Accelerate = m_PlayerInCar.FindAction("Accelerate", throwIfNotFound: true);
@@ -576,6 +608,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerNormal_MoveVertical;
     private readonly InputAction m_PlayerNormal_Attack;
     private readonly InputAction m_PlayerNormal_SpecialAttack;
+    private readonly InputAction m_PlayerNormal_CanvasToggle;
     public struct PlayerNormalActions
     {
         private @Controls m_Wrapper;
@@ -585,6 +618,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @MoveVertical => m_Wrapper.m_PlayerNormal_MoveVertical;
         public InputAction @Attack => m_Wrapper.m_PlayerNormal_Attack;
         public InputAction @SpecialAttack => m_Wrapper.m_PlayerNormal_SpecialAttack;
+        public InputAction @CanvasToggle => m_Wrapper.m_PlayerNormal_CanvasToggle;
         public InputActionMap Get() { return m_Wrapper.m_PlayerNormal; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -609,6 +643,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SpecialAttack.started += instance.OnSpecialAttack;
             @SpecialAttack.performed += instance.OnSpecialAttack;
             @SpecialAttack.canceled += instance.OnSpecialAttack;
+            @CanvasToggle.started += instance.OnCanvasToggle;
+            @CanvasToggle.performed += instance.OnCanvasToggle;
+            @CanvasToggle.canceled += instance.OnCanvasToggle;
         }
 
         private void UnregisterCallbacks(IPlayerNormalActions instance)
@@ -628,6 +665,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SpecialAttack.started -= instance.OnSpecialAttack;
             @SpecialAttack.performed -= instance.OnSpecialAttack;
             @SpecialAttack.canceled -= instance.OnSpecialAttack;
+            @CanvasToggle.started -= instance.OnCanvasToggle;
+            @CanvasToggle.performed -= instance.OnCanvasToggle;
+            @CanvasToggle.canceled -= instance.OnCanvasToggle;
         }
 
         public void RemoveCallbacks(IPlayerNormalActions instance)
@@ -794,6 +834,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMoveVertical(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSpecialAttack(InputAction.CallbackContext context);
+        void OnCanvasToggle(InputAction.CallbackContext context);
     }
     public interface IPlayerInCarActions
     {

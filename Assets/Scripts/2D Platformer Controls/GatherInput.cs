@@ -17,12 +17,14 @@ public class GatherInput : MonoBehaviour
     // private Controls myControls; >C sharp generated approach<
 
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private GameObject canvasRebindGO;
     private InputActionMap playerNormalActionMap;
     private InputAction move;
     private InputAction moveVertical;
     private InputAction jump;
     private InputAction attack;
     private InputAction specialAttack;
+    private InputAction canvasToggle;
 
     public float valueX;
     public bool tryToJump;
@@ -51,6 +53,7 @@ public class GatherInput : MonoBehaviour
         jump = playerInput.actions["Jump"];
         attack = playerInput.actions["Attack"];
         specialAttack = playerInput.actions["SpecialAttack"];
+        canvasToggle = playerInput.actions["CanvasToggle"];
 
         jump.performed += JumpExample;
 
@@ -59,6 +62,8 @@ public class GatherInput : MonoBehaviour
 
         specialAttack.performed += SpecialExample;
         specialAttack.canceled += StopSpecialExample;
+
+        canvasToggle.performed += CanvasControl;
 
         #endregion
 
@@ -105,6 +110,8 @@ public class GatherInput : MonoBehaviour
         specialAttack.performed -= SpecialExample;
         specialAttack.canceled -= StopSpecialExample;
 
+        canvasToggle.performed -= CanvasControl;
+
         playerNormalActionMap.Disable();
 
         #endregion
@@ -147,7 +154,7 @@ public class GatherInput : MonoBehaviour
         {
             valueX = 1;
         }
-        else if(valueX < 0 && valueX >= -1)
+        else if (valueX < 0 && valueX >= -1)
         {
             valueX = -1;
         }
@@ -155,13 +162,20 @@ public class GatherInput : MonoBehaviour
         {
             valueX = 0;
         }
-    
+
     }
 
- 
+    private void CanvasControl(InputAction.CallbackContext value)
+    {
+        if (canvasRebindGO.activeSelf)
+            canvasRebindGO.SetActive(false);
+        else
+            canvasRebindGO.SetActive(true);
+    }
+
     private void JumpExample(InputAction.CallbackContext value)
     {
-  
+
         tryToJump = true;
     }
     private void JumpStopExample(InputAction.CallbackContext value)
@@ -188,7 +202,7 @@ public class GatherInput : MonoBehaviour
     }
 
 
-  
+
 
 
 }
