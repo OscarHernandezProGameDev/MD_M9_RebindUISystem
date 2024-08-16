@@ -41,7 +41,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""MoveHorizontal"",
                     ""type"": ""Button"",
                     ""id"": ""05228187-945a-4fab-bd65-41ef77231cda"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -50,7 +50,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""MoveVertical"",
                     ""type"": ""Button"",
                     ""id"": ""72c15f31-c26d-465f-9825-3b67b61748ad"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
