@@ -65,6 +65,10 @@ public class GatherInput : MonoBehaviour
 
         canvasToggle.performed += CanvasControl;
 
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        if (!string.IsNullOrEmpty(rebinds))
+            playerInput.actions.LoadBindingOverridesFromJson(rebinds);
+
         #endregion
 
         #region Csharp generated approach
