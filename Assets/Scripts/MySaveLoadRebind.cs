@@ -1,12 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class RebindSaveLoad : MonoBehaviour
+public class MySaveLoadRebind : MonoBehaviour
 {
     public InputActionAsset actions;
+    public GatherInput player;
 
-#if !BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
-
+#if BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
     public void OnEnable()
     {
         var rebinds = PlayerPrefs.GetString("rebinds");
@@ -18,6 +20,8 @@ public class RebindSaveLoad : MonoBehaviour
     {
         var rebinds = actions.SaveBindingOverridesAsJson();
         PlayerPrefs.SetString("rebinds", rebinds);
+
+        player?.ActionsResetAndLoad();
     }
 #endif
 }

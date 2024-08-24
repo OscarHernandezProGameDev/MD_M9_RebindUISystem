@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 10018766}
   - component: {fileID: 10018765}
   - component: {fileID: 10018764}
+  - component: {fileID: 10018769}
   m_Layer: 5
   m_Name: CanvasRebind
   m_TagString: Untagged
@@ -590,6 +591,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &10018769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10018763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6030d17cc25318441a40cd401dc200f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: d0acc3311141dda4dbe67c4a3a517847, type: 3}
+  player: {fileID: 566600920}
 --- !u!1 &15596907
 GameObject:
   m_ObjectHideFlags: 0
@@ -14692,19 +14707,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6159885788374806743, guid: 64ae414ed76cc3e48842a16dc54bf037, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6159885788374806743, guid: 64ae414ed76cc3e48842a16dc54bf037, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6159885788374806743, guid: 64ae414ed76cc3e48842a16dc54bf037, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 49.287148
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6159885788374806743, guid: 64ae414ed76cc3e48842a16dc54bf037, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -42.7586
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8072744948664192194, guid: 64ae414ed76cc3e48842a16dc54bf037, type: 3}
       propertyPath: m_Name

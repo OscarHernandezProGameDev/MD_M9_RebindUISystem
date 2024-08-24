@@ -14,10 +14,13 @@ public class GatherInput : MonoBehaviour
     //private InputAction attackAction;
     #endregion
 
-    // private Controls myControls; >C sharp generated approach<
+#if BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
+    private Controls myControls; //C sharp generated approach
+#endif
 
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private GameObject canvasRebindGO;
+#if !BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
     private InputActionMap playerNormalActionMap;
     private InputAction move;
     private InputAction moveVertical;
@@ -25,16 +28,56 @@ public class GatherInput : MonoBehaviour
     private InputAction attack;
     private InputAction specialAttack;
     private InputAction canvasToggle;
+#endif
 
     public float valueX;
     public bool tryToJump;
     public bool tryToAttack;
     public bool trySpecialAttack;
 
+#if BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
+    public void ActionsResetAndLoad()
+    {
+        myControls.PlayerNormal.Jump.performed -= JumpExample;
+        myControls.PlayerNormal.Jump.canceled -= JumpStopExample;
+
+        myControls.PlayerNormal.Attack.performed -= AttackExample;
+        myControls.PlayerNormal.Attack.canceled -= AttackStopExample;
+
+        myControls.PlayerNormal.SpecialAttack.performed -= SpecialExample;
+        myControls.PlayerNormal.SpecialAttack.canceled -= StopSpecialExample;
+
+        myControls.PlayerNormal.CanvasToggle.performed -= CanvasControl;
+
+        myControls.Disable();
+
+        myControls = new Controls();
+
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        if (!string.IsNullOrEmpty(rebinds))
+            myControls.asset.LoadBindingOverridesFromJson(rebinds);
+
+        myControls.PlayerNormal.Jump.performed += JumpExample;
+        myControls.PlayerNormal.Jump.canceled += JumpStopExample;
+
+        myControls.PlayerNormal.Attack.performed += AttackExample;
+        myControls.PlayerNormal.Attack.canceled += AttackStopExample;
+
+        myControls.PlayerNormal.SpecialAttack.performed += SpecialExample;
+        myControls.PlayerNormal.SpecialAttack.canceled += StopSpecialExample;
+        myControls.PlayerNormal.CanvasToggle.performed += CanvasControl;
+
+        myControls.Enable();
+    }
+#endif
+
 
     private void Awake()
     {
-        //myControls = new Controls(); >C sharp generated approach<
+#if BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
+        playerInput.enabled = false;
+        myControls = new Controls(); //C sharp generated approach
+#endif
         #region Inspector Reference Approach
         //playerNormal = actionAsset.FindActionMap("PlayerNormal");
         //jumpAction = playerNormal.FindAction("Jump");
@@ -47,6 +90,7 @@ public class GatherInput : MonoBehaviour
     {
         #region Player Input Workflow
 
+#if !BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
         playerNormalActionMap = playerInput.actions.FindActionMap("PlayerNormal");
         move = playerInput.actions["MoveHorizontal"];
         moveVertical = playerInput.actions["MoveVertical"];
@@ -68,6 +112,7 @@ public class GatherInput : MonoBehaviour
         var rebinds = PlayerPrefs.GetString("rebinds");
         if (!string.IsNullOrEmpty(rebinds))
             playerInput.actions.LoadBindingOverridesFromJson(rebinds);
+#endif
 
         #endregion
 
@@ -75,18 +120,24 @@ public class GatherInput : MonoBehaviour
         //myControls.PlayerNormal.Enable();
         //myControls.PlayerNormal.Jump.Enable();
         //myControls.PlayerNormal.Jump.started += JumpStarted;
-        /*
-          myControls.PlayerNormal.Jump.performed += JumpExample;
-          myControls.PlayerNormal.Jump.canceled += JumpStopExample;
 
-          myControls.PlayerNormal.Attack.performed += AttackExample;
-          myControls.PlayerNormal.Attack.canceled += AttackStopExample;
+#if BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        if (!string.IsNullOrEmpty(rebinds))
+            myControls.asset.LoadBindingOverridesFromJson(rebinds);
 
-          myControls.PlayerNormal.SpecialAttack.performed += SpecialExample;
-          myControls.PlayerNormal.SpecialAttack.canceled += StopSpecialExample;
+        myControls.PlayerNormal.Jump.performed += JumpExample;
+        myControls.PlayerNormal.Jump.canceled += JumpStopExample;
 
-          myControls.Enable();
-        */
+        myControls.PlayerNormal.Attack.performed += AttackExample;
+        myControls.PlayerNormal.Attack.canceled += AttackStopExample;
+
+        myControls.PlayerNormal.SpecialAttack.performed += SpecialExample;
+        myControls.PlayerNormal.SpecialAttack.canceled += StopSpecialExample;
+        myControls.PlayerNormal.CanvasToggle.performed += CanvasControl;
+
+        myControls.Enable();
+#endif
         #endregion
         #region Inspector Reference Approach
         //jumpAction.performed += JumpExample;
@@ -106,6 +157,7 @@ public class GatherInput : MonoBehaviour
     {
         #region Player Input Workflow
 
+#if !BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
         jump.performed -= JumpExample;
 
         attack.performed -= AttackExample;
@@ -117,12 +169,14 @@ public class GatherInput : MonoBehaviour
         canvasToggle.performed -= CanvasControl;
 
         playerNormalActionMap.Disable();
+#endif
 
         #endregion
 
         #region Csharp generated approach
         //  myControls.PlayerNormal.Jump.started -= JumpStarted;
-        /*
+
+#if BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
         myControls.PlayerNormal.Jump.performed -= JumpExample;
         myControls.PlayerNormal.Jump.canceled -= JumpStopExample;
 
@@ -132,9 +186,11 @@ public class GatherInput : MonoBehaviour
         myControls.PlayerNormal.SpecialAttack.performed -= SpecialExample;
         myControls.PlayerNormal.SpecialAttack.canceled -= StopSpecialExample;
 
+        myControls.PlayerNormal.CanvasToggle.performed -= CanvasControl;
+
         myControls.Disable();
 
-        */
+#endif
         #endregion
         #region Inspector Reference Approach
         //jumpAction.performed -= JumpExample;
@@ -150,9 +206,11 @@ public class GatherInput : MonoBehaviour
 
     void Update()
     {
-        // valueX = myControls.PlayerNormal.MoveHorizontal.ReadValue<float>(); >C sharp generated approach<
-
+#if BINDING_PERSISTENTES_CON_CSHARP_CLASS_GENERATED
+        valueX = myControls.PlayerNormal.MoveHorizontal.ReadValue<float>(); //C sharp generated approach<
+#else
         valueX = move.ReadValue<float>();
+#endif
 
         if (valueX > 0.01f)
         {
