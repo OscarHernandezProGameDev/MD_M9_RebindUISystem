@@ -414,6 +414,10 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         [SerializeField]
         private TextMeshProUGUI m_RebindText;
 
+        [SerializeField] private bool overrideActionLabel;
+
+        [SerializeField] private string actionLabelString;
+
         [Tooltip("Event that is triggered when the way the binding is display should be updated. This allows displaying "
             + "bindings in custom ways, e.g. using images instead of text.")]
         [SerializeField]
@@ -449,7 +453,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             if (m_ActionLabel != null)
             {
                 var action = m_Action?.action;
-                m_ActionLabel.text = action != null ? action.name : string.Empty;
+                m_ActionLabel.text = action != null ? overrideActionLabel ? actionLabelString : action.name : string.Empty;
             }
         }
 
