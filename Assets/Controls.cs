@@ -68,7 +68,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""SpecialAttack"",
                     ""type"": ""Button"",
                     ""id"": ""448e0d7f-5452-4c7e-9e40-4b1c75ffaf88"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -285,7 +285,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""binding"",
                     ""id"": ""f4e9ff95-547d-4b3c-9483-b81643e28088"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
@@ -318,7 +318,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""binding"",
                     ""id"": ""b9128865-2441-4fab-bc3a-aad839b8674b"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
