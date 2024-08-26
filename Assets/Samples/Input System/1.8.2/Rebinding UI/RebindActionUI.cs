@@ -274,7 +274,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
                 .WithCancelingThrough("<Keyboard>/escape")
-                .WithControlsExcluding("<Mouse>")
                 .WithControlsExcluding("<Gamepad>/leftStick/x")
                 .WithControlsExcluding("<Gamepad>/leftStick/y")
                 .WithControlsExcluding("<Gamepad>/rightStick/x")
@@ -295,6 +294,9 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                         if (m_RebindOverlay != null)
                             m_RebindOverlay.SetActive(false);
                         m_RebindStopEvent?.Invoke(this, operation);
+
+                        CheckAndSwapDuplicates(action, bindingIndex, pathBeforeThisRebind);
+
                         UpdateBindingDisplay();
                         CleanUp();
 
@@ -357,6 +359,21 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                         {
                             otherAction.ApplyBindingOverride(otherBindingIndex, pathBeforeRebind);
                             canBreak = true;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (InputBinding otherBinding in otherAction.bindings)
+                    {
+                        otherBindingIndex++;
+                        if (otherBinding.isPartOfComposite && otherBindingIndex != bindingIndex)
+                        {
+                            if (otherBinding.effectivePath == currentBinding.effectivePath)
+                            {
+                                otherAction.ApplyBindingOverride(otherBindingIndex, pathBeforeRebind);
+                                canBreak = true;
+                            }
                         }
                     }
                 }
