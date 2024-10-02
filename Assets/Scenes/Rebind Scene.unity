@@ -10701,7 +10701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Keyboard&Mouse
+  m_text: Keyboard & Mouse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e2a47ab8dd84f94590611c3ca0a08f1, type: 2}
   m_sharedMaterial: {fileID: -3359197029103750868, guid: 5e2a47ab8dd84f94590611c3ca0a08f1, type: 2}
@@ -14501,7 +14501,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Keyboard&Mouse
+  m_text: Gamepad
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e2a47ab8dd84f94590611c3ca0a08f1, type: 2}
   m_sharedMaterial: {fileID: -3359197029103750868, guid: 5e2a47ab8dd84f94590611c3ca0a08f1, type: 2}
